@@ -6,7 +6,7 @@ import { postContext } from '../Page/Newsfeed'
 const FormCompornent = () => {
     
     //@ts.ignore
-    const {setData, data} = useContext(postContext)
+    const value = useContext(postContext)
     const [form] = Form.useForm();
     const handleSubmit = (values: any) => {     
           const newData = {
@@ -15,7 +15,10 @@ const FormCompornent = () => {
             value: form.getFieldValue('content'),
             author: 'admin'
         };   
-        setData([...data.posts, newData])
+        //@ts-ignore
+        value.setData([...value.data, newData])
+        //@ts-ignore
+        console.log(value.data)
     }
 return (
     <div className="p-4">
